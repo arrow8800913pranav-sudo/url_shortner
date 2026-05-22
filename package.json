@@ -1,0 +1,25 @@
+{
+  "name": "url_shortner",
+  "version": "1.0.0",
+  "description": "Shortnes URL and keeps track of clicks",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrow8800913pranav-sudo/url_shortner.git"
+  },
+  "author": "Pranav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arrow8800913pranav-sudo/url_shortner/issues"
+  },
+  "homepage": "https://github.com/arrow8800913pranav-sudo/url_shortner#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2",
+    "nodemon": "^3.1.14",
+    "shortid": "^2.2.17"
+  }
+}
