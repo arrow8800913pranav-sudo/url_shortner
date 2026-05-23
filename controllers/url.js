@@ -4,7 +4,7 @@ const URL = require("../models/url");
 //The  request body needs links with https:// otherwsie next get fails
 async function handleCreateShortId(req, res) {
   const body = req.body;
-
+  
   if (!body || !body.url) {
     return res.status(400).json({ msg: "URL is required" });
   }
@@ -17,10 +17,13 @@ async function handleCreateShortId(req, res) {
     visitHistory: [],
   });
 
-  return res.status(201).json({
-    msg: "URL generated successfully",
-    shortId,
-  });
+  return res.render('home', {
+    id: shortId
+  })
+  // return res.status(201).json({
+  //   msg: "URL generated successfully",
+  //   shortId,
+  // });
 }
 
 async function handleRedirectURLById(req, res) {
