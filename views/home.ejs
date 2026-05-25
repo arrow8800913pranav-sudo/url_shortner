@@ -5,49 +5,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+  <style>
+    body {
+      font-size: 17px;
+    }
+
+    header {
+      background-color: antiquewhite;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    .logout {
+      display: flex;
+      justify-self: flex-end;
+      background-color: brown;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .logout:active {
+      background-color: rgb(127, 53, 53);
+      border: 0.5px solid black;
+    }
+
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      align-self: center;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    input {
+      border-radius: 6px;
+      font-size: 14px;
+      padding: 0.5rem;
+    }
+
+    .general-btn {
+      border-radius: 6px;
+      background-color: rgb(33, 33, 160);
+      color: white;
+      padding: 0.5rem;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Generate short URLs</h1>
-  <div>
-    <form method="post" action="/url">
-      <input type="text" placeholder="https://www.example.com" name="url">
-      <button type="submit">Generate</button>
+  <header>
+    <form action="/user/logout" method="post">
+      <button class="logout">Logout</button>
     </form>
-  </div>
-  <% if(locals.id) { %>
-    <p>
-      Generated URL:
-      <a href="http://localhost:8000/url/<%= id %>" target="_blank">
-        http://localhost:8000/url/<%= id %>
-      </a>
-    </p>
-    <% } %>
-      <% if(locals.urls) { %>
+  </header>
+  <div class="card">
+    <h1>Generate short URLs</h1>
+    <div>
+      <form method="post" action="/url">
+        <input type="text" placeholder="https://www.example.com" name="url">
+        <button type="submit" class="general-btn">Generate</button>
+      </form>
+    </div>
+    <% if(locals.id) { %>
+      <p>
+        Generated URL:
+        <a href="/url/<%= id %>" target="_blank">
+          domain/<%= id %>
+        </a>
+      </p>
+      <% } %>
         <div>
-          <table>
-            <th>Serial</th>
-            <th>Generated URLs</th>
-            <th>Original URLs URL</th>
-            <th>Total Clicks</th>
-            <% urls.forEach((url, index)=> { %>
-              <tr>
-                <td>
-                  <%= index + 1 %>
-                </td>
-                <td><a href="http://localhost:8000/url/<%= url.shortId %>" target="_blank">http://localhost:8000/url/<%=
-                      url.shortId %></a></td>
-                <td>
-                  <%= url.redirectURL %>
-                </td>
-                <td>
-                  <%= url.visitHistory.length %>
-                </td>
-              </tr>
-              <% }) %>
-          </table>
+          <form action="/url/all" method="get" id="get-all">
+            <button class="general-btn" type="submit" form="get-all">View All</button>
+          </form>
         </div>
-        <% } %>
+        <% if(locals.urls) { %>
+          <div>
+              <table>
+                <th>Serial</th>
+                <th>Generated URLs</th>
+                <th>Original URLs URL</th>
+                <th>Total Clicks</th>
+                <% urls.forEach((url, index)=> { %>
+                  <tr>
+                    <td>
+                      <%= index + 1 %>
+                    </td>
+                    <td>
+                      <a href="/url/<%= url.shortId %>" target="_blank">domain/<%= url.shortId %>
+                      </a>
+                    </td>
+                    <td>
+                      <%= url.redirectURL %>
+                    </td>
+                    <td>
+                      <%= url.visitHistory.length %>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </table>
+          </div>
+          <% } %>
+  </div>
 </body>
 
 </html>

@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/arrow8800913pranav-sudo/url_shortner#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^5.0.2",
     "express": "^5.2.1",
     "mongoose": "^9.6.2",
     "nodemon": "^3.1.14",
-    "shortid": "^2.2.17"
+    "shortid": "^2.2.17",
+    "uuid": "^11.1.1"
   }
 }
