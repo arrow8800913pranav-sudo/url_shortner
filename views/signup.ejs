@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    form {
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 20rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    input {
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      border-radius: 6px;
+      background-color: rgb(33, 33, 160);
+      color: white;
+      padding-block: 0.5rem;
+      width: 55%;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/user/signup" method="post">
+    <h1>Signup</h1>
+    <input type="string" id="name" name="name" placeholder="Enter your name">
+    <input type="email" id="email" name="email" placeholder="Email">
+    <input type="password" id="password" name="password" placeholder="Password">
+    <button type="submit">Signup</button>
+  </form>
+</body>
+
+</html>
